@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Hero;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,11 @@ class CompanyFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return [ 
+            'hero_id' => Hero::factory()->create(),
             'name' => fake()->unique()->name(),
-            
+            'email' => fake()->unique()->email(),
+            'image' => 'DC.png',
         ];
     }
 }

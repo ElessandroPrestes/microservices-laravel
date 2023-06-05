@@ -12,8 +12,9 @@ class HeroTest extends TestCase
     protected $endpoint = '/heroes';
     /**
      * Get All Heroes
+     * @test
      */
-    public function test_get_all_heroes()
+    public function get_all_heroes()
     {
         Hero::factory()->count(6)->create();
 
@@ -25,10 +26,10 @@ class HeroTest extends TestCase
 
      /**
      * Error Get Single Hero
-     *
+     *@test
      * @return void
      */
-    public function test_error_get_single_hero()
+    public function error_get_single_hero()
     {
         $hero = 'fake-url';
 
@@ -39,10 +40,10 @@ class HeroTest extends TestCase
 
     /**
      * Get Single Hero
-     *
+     *@test
      * @return void
      */
-    public function test_get_single_hero()
+    public function get_single_hero()
     {
         $hero = Hero::factory()->create();
 
@@ -53,10 +54,10 @@ class HeroTest extends TestCase
 
     /**
      * Validation Store Hero
-     *
+     *@test
      * @return void
      */
-    public function test_validations_store_hero()
+    public function validations_store_hero()
     {
         $response = $this->postJson($this->endpoint, [
             'name' => '',
@@ -69,10 +70,10 @@ class HeroTest extends TestCase
 
     /**
      * Store Hero
-     *
+     *@test
      * @return void
      */
-    public function test_store_hero()
+    public function store_hero()
     {
         $response = $this->postJson($this->endpoint, [
             'name' => 'Hero 01',
@@ -85,10 +86,10 @@ class HeroTest extends TestCase
 
     /**
      * Update Hero
-     *
+     *@test
      * @return void
      */
-    public function test_update_hero()
+    public function update_hero()
     {
         $hero = Hero::factory()->create();
 
@@ -110,10 +111,10 @@ class HeroTest extends TestCase
 
     /**
      * Delete Hero
-     *
+     *@test
      * @return void
      */
-    public function test_delete_hero()
+    public function delete_hero()
     {
         $hero = Hero::factory()->create();
 

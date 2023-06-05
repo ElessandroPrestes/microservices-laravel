@@ -14,8 +14,9 @@ class CompanyTest extends TestCase
     protected $endpoint = '/companies';
     /**
      * Get All Companies
+     * @test
      */
-    public function test_get_all_companies()
+    public function get_all_companies()
     {
         Company::factory()->count(6)->create();
 
@@ -27,10 +28,10 @@ class CompanyTest extends TestCase
 
     /**
      * Error Get Single Hero
-     *
+     *@test
      * @return void
      */
-    public function test_error_get_single_company()
+    public function error_get_single_company()
     {
         $company = 'fake-uuid';
 
@@ -41,10 +42,10 @@ class CompanyTest extends TestCase
 
      /**
      * Get Single Company
-     *
+     *@test
      * @return void
      */
-    public function test_get_single_company()
+    public function get_single_company()
     {
         $company = Company::factory()->create();
 
@@ -55,10 +56,10 @@ class CompanyTest extends TestCase
 
     /**
      * Validation Store Hero
-     *
+     *@test
      * @return void
      */
-    public function test_validations_store_company()
+    public function validations_store_company()
     {
         $response = $this->postJson($this->endpoint, [
             'name' => '',
@@ -69,10 +70,10 @@ class CompanyTest extends TestCase
 
     /**
      * Store Hero
-     *
+     *@test
      * @return void
      */
-    public function test_store_company()
+    public function store_company()
     {
         $hero = Hero::factory()->create();
 
@@ -95,18 +96,18 @@ class CompanyTest extends TestCase
 
     /**
      * Update Hero
-     *
+     *@test
      * @return void
      */
-    public function test_update_company()
+    public function update_company()
     {
         $company = Company::factory()->create();
         $hero = Hero::factory()->create();
 
         $data = [
             'hero_id' => $hero->id,
-            'name' => 'Company Updated',
-            'email' => 'Super Hero Updated',
+            'name' => 'E10 Company Updated',
+            'email' => 'e10@e10.com.br',
         ];
 
         $response = $this->putJson("$this->endpoint/fake-company", $data);
@@ -121,10 +122,10 @@ class CompanyTest extends TestCase
 
     /**
      * Delete Company
-     *
+     *@test
      * @return void
      */
-    public function test_delete_company()
+    public function delete_company()
     {
         $company = Company::factory()->create();
 
