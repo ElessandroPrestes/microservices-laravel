@@ -14,4 +14,9 @@ class Hero extends Model
     protected $fillable = ['name', 'alias', 'power', 'url'];
 
     public $timestamps = true;
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+    }
 }

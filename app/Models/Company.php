@@ -17,4 +17,23 @@ class Company extends Model
         'url',
         'image',
     ];
+
+    public function hero()
+    {
+        return $this->belongsTo(Hero::class);
+    }
+
+    public function getCompanies(string $filter = '')
+    {
+        $companies = $this->with('category')
+                            ->where(function ($query) use ($filter) {
+                                if ($filter != '') {
+                                    $query->where('name', 'LIKE', "%{$filter}%");
+                                    $query->orWhere('email', '=', $filter);
+                                }
+                            })
+                            ->paginate();
+
+        return $companies;
+    }
 }
