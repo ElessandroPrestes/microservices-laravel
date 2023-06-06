@@ -1,7 +1,7 @@
 version: "3.8"
 services:
-    # imagem micro 01
-    micro_01:
+    # imagem microservice 01
+    microservice_01:
         build: 
             args: 
                 user: elessandro
@@ -14,12 +14,12 @@ services:
         volumes:
             - ./:/var/www
         depends_on: 
-            - redis_micro_01
+            - redis
             - queue
         networks: 
             - microservices
     
-    # nginx
+    # nginx microservice 01
     nginx:
         image: nginx:alpine
         restart: unless-stopped
@@ -32,7 +32,7 @@ services:
         networks: 
             - microservices
 
-    # mysql micro 01
+    # mysql microservice 01
     db:
         image: mysql:5.7.22
         restart: unless-stopped
@@ -48,7 +48,7 @@ services:
         networks: 
             - microservices
 
-    # sgdb
+    # sgdb microservice 01
     adminer:
         image: adminer
         restart: unless-stopped
@@ -59,7 +59,7 @@ services:
         networks: 
             - microservices
 
-    # queue micro 01
+    # queue microservice 01
     queue:
         build: 
             args: 
@@ -72,12 +72,12 @@ services:
         volumes: 
             - ./:/var/www
         depends_on: 
-            - redis_micro_01
+            - redis
         networks: 
             - microservices
 
     #redis
-    redis_micro_01:
+    redis:
         image: redis:latest
         networks: 
             - microservices

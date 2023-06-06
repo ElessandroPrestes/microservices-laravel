@@ -18,7 +18,7 @@ class CompanyTest extends TestCase
      */
     public function get_all_companies()
     {
-        Company::factory()->count(6)->create();
+        Company::factory()->count(10)->create();
 
         $response = $this->getJson($this->endpoint);
 
@@ -77,7 +77,7 @@ class CompanyTest extends TestCase
     {
         $hero = Hero::factory()->create();
 
-        $image = UploadedFile::fake()->image('eti.png');
+        $image = UploadedFile::fake()->image('e10.png');
 
         $response = $this->call(
             'POST',
